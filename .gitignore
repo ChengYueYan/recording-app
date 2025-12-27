@@ -1,7 +1,7 @@
 ############################
-# Logs
+# Logs / 调试日志
 ############################
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -12,32 +12,31 @@ lerna-debug.log*
 ############################
 # Node / Frontend
 ############################
-node_modules
-dist
-dist-ssr
+node_modules/
+dist/
+dist-ssr/
 *.local
 
 ############################
-# Android / Gradle
+# Android / Gradle（重点）
 ############################
 .gradle/
-build/
-*/build/
+**/build/
 captures/
 .externalNativeBuild/
 .cxx/
 
 ############################
-# APK / Release output
+# APK / Release output（只走 GitHub Release）
 ############################
-release/
 *.apk
 *.aab
+release/
 
 ############################
 # IDE / OS
 ############################
-.vscode/*
+.vscode/
 !.vscode/extensions.json
 .idea/
 .DS_Store
@@ -47,4 +46,3 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
-/build/intermediates
