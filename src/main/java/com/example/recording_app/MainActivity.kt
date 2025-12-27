@@ -17,6 +17,7 @@ import com.example.recording_app.data.ThemePreferences
 import com.example.recording_app.ui.components.BackgroundImageBox
 import com.example.recording_app.ui.components.LanguageSelectionDialog
 import com.example.recording_app.util.LanguageManager
+import java.io.File
 
 class MainActivity : ComponentActivity() {
     private lateinit var viewModel: FinanceViewModel
@@ -35,36 +36,42 @@ class MainActivity : ComponentActivity() {
         LanguageManager.updateConfiguration(this, savedLanguage)
         
         viewModel = FinanceViewModel(application)
-        
+
         setContent {
-            var showLanguageDialog by remember { 
+            var showLanguageDialog by remember {
                 mutableStateOf(LanguageManager.isFirstLaunch(this@MainActivity))
             }
-            
-            var themeColor by remember { 
-                try {
-                    mutableStateOf(ThemePreferences.getPrimaryColorAsColor(applicationContext))
-                } catch (e: Exception) {
-                    mutableStateOf(com.example.recording_app.ui.theme.Primary)
-                }
+
+            var themeColor by remember {
+                mutableStateOf(ThemePreferences.getPrimaryColorAsColor(applicationContext))
             }
-            
-            var backgroundImagePath by remember { 
+
+            // 🔧 确保背景路径正确初始化
+            var backgroundImagePath by remember {
                 mutableStateOf<String?>(ThemePreferences.getBackgroundImagePath(applicationContext))
             }
-            
+
+            // 🔧 添加日志
+            LaunchedEffect(Unit) {
+                val path = ThemePreferences.getBackgroundImagePath(applicationContext)
+                android.util.Log.d("MainActivity", "Initial background path: $path")
+                if (path != null) {
+                    val file = File(path)
+                    android.util.Log.d("MainActivity", "File exists: ${file.exists()}, size: ${file.length()}")
+                }
+            }
+
             if (showLanguageDialog) {
                 LanguageSelectionDialog(
                     onLanguageSelected = { language ->
                         LanguageManager.saveLanguage(this@MainActivity, language)
                         LanguageManager.setFirstLaunchCompleted(this@MainActivity)
                         showLanguageDialog = false
-                        // Restart activity to apply language change
                         recreate()
                     }
                 )
             }
-            
+
             FinanceAppTheme(primaryColor = themeColor) {
                 BackgroundImageBox(backgroundImagePath = backgroundImagePath) {
                     Surface(
@@ -81,6 +88,7 @@ class MainActivity : ComponentActivity() {
                                 themeColor = Color(colorValue)
                             },
                             onBackgroundImageChanged = { path ->
+                                android.util.Log.d("MainActivity", "Background changed to: $path")
                                 backgroundImagePath = path
                             },
                             hasBackgroundImage = backgroundImagePath != null
@@ -91,3 +99,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+

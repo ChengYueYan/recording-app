@@ -37,16 +37,37 @@ object ThemePreferences {
     fun saveBackgroundImageUri(context: Context, uri: Uri): String? {
         return try {
             val imageFile = File(context.filesDir, "custom_background.jpg")
+
+            // 🔧 如果旧文件存在,先删除
+            if (imageFile.exists()) {
+                imageFile.delete()
+            }
+
             context.contentResolver.openInputStream(uri)?.use { input ->
                 FileOutputStream(imageFile).use { output ->
-                    input.copyTo(output)
+                    // 🔧 添加缓冲区提高性能
+                    val buffer = ByteArray(8192)
+                    var bytesRead: Int
+                    while (input.read(buffer).also { bytesRead = it } != -1) {
+                        output.write(buffer, 0, bytesRead)
+                    }
+                    output.flush()
                 }
             }
-            getSharedPreferences(context).edit()
-                .putString(KEY_BACKGROUND_IMAGE, imageFile.absolutePath)
-                .apply()
-            imageFile.absolutePath
+
+            // 🔧 验证文件是否保存成功
+            if (imageFile.exists() && imageFile.length() > 0) {
+                android.util.Log.d("ThemePreferences", "Image saved: ${imageFile.absolutePath}, size: ${imageFile.length()}")
+                getSharedPreferences(context).edit()
+                    .putString(KEY_BACKGROUND_IMAGE, imageFile.absolutePath)
+                    .apply()
+                imageFile.absolutePath
+            } else {
+                android.util.Log.e("ThemePreferences", "Image file not created or empty")
+                null
+            }
         } catch (e: Exception) {
+            android.util.Log.e("ThemePreferences", "Error saving background image", e)
             e.printStackTrace()
             null
         }

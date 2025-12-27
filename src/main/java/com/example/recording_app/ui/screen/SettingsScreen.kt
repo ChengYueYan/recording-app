@@ -69,17 +69,38 @@ fun SettingsScreen(
     var selectedIcon by remember { 
         mutableStateOf(ThemePreferences.getSelectedIcon(context) ?: "💰")
     }
-    
+
     val backgroundPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
+            android.util.Log.d("SettingsScreen", "Selected URI: $uri")
+
+            // 🔧 添加持久化权限
+            try {
+                context.contentResolver.takePersistableUriPermission(
+                    it,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+            } catch (e: SecurityException) {
+                android.util.Log.w("SettingsScreen", "Cannot take persistable permission", e)
+            }
+
             val savedPath = ThemePreferences.saveBackgroundImageUri(context, it)
+            android.util.Log.d("SettingsScreen", "Saved path: $savedPath")
+
             if (savedPath != null) {
                 backgroundImagePath = savedPath
                 showBackgroundSuccess = true
                 // Notify MainActivity to update background
                 onBackgroundImageChanged?.invoke(savedPath)
+            } else {
+                // 🔧 显示错误提示
+                android.widget.Toast.makeText(
+                    context,
+                    "保存图片失败,请重试",
+                    android.widget.Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
