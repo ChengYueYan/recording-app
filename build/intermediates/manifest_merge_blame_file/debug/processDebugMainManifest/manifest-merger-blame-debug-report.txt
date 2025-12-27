@@ -1,0 +1,484 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.recording_app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+11-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:4:5-80
+11-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:4:22-77
+12    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+12-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:5:5-76
+12-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:5:22-73
+13
+14    <permission
+14-->[androidx.core:core:1.12.0] C:\Users\20653\.gradle\caches\transforms-4\f97f54b263f8849a729cef9d7be0c63d\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+15        android:name="com.example.recording_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.12.0] C:\Users\20653\.gradle\caches\transforms-4\f97f54b263f8849a729cef9d7be0c63d\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.12.0] C:\Users\20653\.gradle\caches\transforms-4\f97f54b263f8849a729cef9d7be0c63d\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.example.recording_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.12.0] C:\Users\20653\.gradle\caches\transforms-4\f97f54b263f8849a729cef9d7be0c63d\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.12.0] C:\Users\20653\.gradle\caches\transforms-4\f97f54b263f8849a729cef9d7be0c63d\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:7:5-205:19
+21        android:allowBackup="true"
+21-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:8:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.12.0] C:\Users\20653\.gradle\caches\transforms-4\f97f54b263f8849a729cef9d7be0c63d\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+23        android:debuggable="true"
+24        android:extractNativeLibs="false"
+25        android:icon="@mipmap/ic_launcher"
+25-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:9:9-43
+26        android:label="@string/app_name"
+26-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:10:9-41
+27        android:roundIcon="@mipmap/ic_launcher_round"
+27-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:11:9-54
+28        android:supportsRtl="true"
+28-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:12:9-35
+29        android:testOnly="true"
+30        android:theme="@style/Theme._202308190244chenyueyan" >
+30-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:13:9-61
+31        <activity
+31-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:14:9-23:20
+32            android:name="com.example.recording_app.MainActivity"
+32-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:15:13-41
+33            android:enabled="true"
+33-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:17:13-35
+34            android:exported="true"
+34-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:16:13-36
+35            android:theme="@style/Theme._202308190244chenyueyan" >
+35-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:18:13-65
+36            <intent-filter>
+36-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+37-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+39-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+40            </intent-filter>
+41        </activity> <!-- Icon 12: 💫 -->
+42        <activity-alias
+42-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:192:9-204:26
+43            android:name="com.example.recording_app.Icon12"
+43-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:193:13-35
+44            android:enabled="false"
+44-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:198:13-36
+45            android:exported="true"
+45-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:199:13-36
+46            android:icon="@mipmap/ic_launcher"
+46-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:195:13-47
+47            android:label="@string/app_name"
+47-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:197:13-45
+48            android:roundIcon="@mipmap/ic_launcher_round"
+48-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:196:13-58
+49            android:targetActivity="com.example.recording_app.MainActivity" >
+49-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:194:13-51
+50            <intent-filter>
+50-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+51                <action android:name="android.intent.action.MAIN" />
+51-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+51-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+52
+53                <category android:name="android.intent.category.LAUNCHER" />
+53-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+53-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+54            </intent-filter>
+55        </activity-alias> <!-- Icon 11: 🔮 -->
+56        <activity-alias
+56-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:177:9-189:26
+57            android:name="com.example.recording_app.Icon11"
+57-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:178:13-35
+58            android:enabled="false"
+58-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:183:13-36
+59            android:exported="true"
+59-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:184:13-36
+60            android:icon="@mipmap/ic_launcher"
+60-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:180:13-47
+61            android:label="@string/app_name"
+61-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:182:13-45
+62            android:roundIcon="@mipmap/ic_launcher_round"
+62-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:181:13-58
+63            android:targetActivity="com.example.recording_app.MainActivity" >
+63-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:179:13-51
+64            <intent-filter>
+64-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+65                <action android:name="android.intent.action.MAIN" />
+65-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+65-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+66
+67                <category android:name="android.intent.category.LAUNCHER" />
+67-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+67-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+68            </intent-filter>
+69        </activity-alias> <!-- Icon 10: 🎪 -->
+70        <activity-alias
+70-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:162:9-174:26
+71            android:name="com.example.recording_app.Icon10"
+71-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:163:13-35
+72            android:enabled="false"
+72-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:168:13-36
+73            android:exported="true"
+73-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:169:13-36
+74            android:icon="@mipmap/ic_launcher"
+74-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:165:13-47
+75            android:label="@string/app_name"
+75-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:167:13-45
+76            android:roundIcon="@mipmap/ic_launcher_round"
+76-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:166:13-58
+77            android:targetActivity="com.example.recording_app.MainActivity" >
+77-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:164:13-51
+78            <intent-filter>
+78-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+79                <action android:name="android.intent.action.MAIN" />
+79-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+79-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+80
+81                <category android:name="android.intent.category.LAUNCHER" />
+81-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+81-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+82            </intent-filter>
+83        </activity-alias> <!-- Icon 9: 🌟 -->
+84        <activity-alias
+84-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:147:9-159:26
+85            android:name="com.example.recording_app.Icon9"
+85-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:148:13-34
+86            android:enabled="false"
+86-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:153:13-36
+87            android:exported="true"
+87-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:154:13-36
+88            android:icon="@mipmap/ic_launcher"
+88-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:150:13-47
+89            android:label="@string/app_name"
+89-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:152:13-45
+90            android:roundIcon="@mipmap/ic_launcher_round"
+90-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:151:13-58
+91            android:targetActivity="com.example.recording_app.MainActivity" >
+91-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:149:13-51
+92            <intent-filter>
+92-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+93                <action android:name="android.intent.action.MAIN" />
+93-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+93-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+94
+95                <category android:name="android.intent.category.LAUNCHER" />
+95-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+95-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+96            </intent-filter>
+97        </activity-alias> <!-- Icon 8: 🎭 -->
+98        <activity-alias
+98-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:132:9-144:26
+99            android:name="com.example.recording_app.Icon8"
+99-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:133:13-34
+100            android:enabled="false"
+100-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:138:13-36
+101            android:exported="true"
+101-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:139:13-36
+102            android:icon="@mipmap/ic_launcher"
+102-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:135:13-47
+103            android:label="@string/app_name"
+103-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:137:13-45
+104            android:roundIcon="@mipmap/ic_launcher_round"
+104-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:136:13-58
+105            android:targetActivity="com.example.recording_app.MainActivity" >
+105-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:134:13-51
+106            <intent-filter>
+106-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+107                <action android:name="android.intent.action.MAIN" />
+107-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+107-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+108
+109                <category android:name="android.intent.category.LAUNCHER" />
+109-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+109-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+110            </intent-filter>
+111        </activity-alias> <!-- Icon 7: 💎 -->
+112        <activity-alias
+112-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:117:9-129:26
+113            android:name="com.example.recording_app.Icon7"
+113-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:118:13-34
+114            android:enabled="false"
+114-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:123:13-36
+115            android:exported="true"
+115-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:124:13-36
+116            android:icon="@mipmap/ic_launcher"
+116-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:120:13-47
+117            android:label="@string/app_name"
+117-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:122:13-45
+118            android:roundIcon="@mipmap/ic_launcher_round"
+118-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:121:13-58
+119            android:targetActivity="com.example.recording_app.MainActivity" >
+119-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:119:13-51
+120            <intent-filter>
+120-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+121                <action android:name="android.intent.action.MAIN" />
+121-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+121-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+122
+123                <category android:name="android.intent.category.LAUNCHER" />
+123-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+123-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+124            </intent-filter>
+125        </activity-alias> <!-- Icon 6: 🎯 -->
+126        <activity-alias
+126-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:102:9-114:26
+127            android:name="com.example.recording_app.Icon6"
+127-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:103:13-34
+128            android:enabled="false"
+128-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:108:13-36
+129            android:exported="true"
+129-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:109:13-36
+130            android:icon="@mipmap/ic_launcher"
+130-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:105:13-47
+131            android:label="@string/app_name"
+131-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:107:13-45
+132            android:roundIcon="@mipmap/ic_launcher_round"
+132-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:106:13-58
+133            android:targetActivity="com.example.recording_app.MainActivity" >
+133-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:104:13-51
+134            <intent-filter>
+134-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+135                <action android:name="android.intent.action.MAIN" />
+135-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+135-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+136
+137                <category android:name="android.intent.category.LAUNCHER" />
+137-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+137-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+138            </intent-filter>
+139        </activity-alias> <!-- Icon 5: 🌸 -->
+140        <activity-alias
+140-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:87:9-99:26
+141            android:name="com.example.recording_app.Icon5"
+141-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:88:13-34
+142            android:enabled="false"
+142-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:93:13-36
+143            android:exported="true"
+143-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:94:13-36
+144            android:icon="@mipmap/ic_launcher"
+144-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:90:13-47
+145            android:label="@string/app_name"
+145-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:92:13-45
+146            android:roundIcon="@mipmap/ic_launcher_round"
+146-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:91:13-58
+147            android:targetActivity="com.example.recording_app.MainActivity" >
+147-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:89:13-51
+148            <intent-filter>
+148-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+149                <action android:name="android.intent.action.MAIN" />
+149-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+149-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+150
+151                <category android:name="android.intent.category.LAUNCHER" />
+151-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+151-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+152            </intent-filter>
+153        </activity-alias> <!-- Icon 4: ⭐ -->
+154        <activity-alias
+154-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:72:9-84:26
+155            android:name="com.example.recording_app.Icon4"
+155-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:73:13-34
+156            android:enabled="false"
+156-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:78:13-36
+157            android:exported="true"
+157-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:79:13-36
+158            android:icon="@mipmap/ic_launcher"
+158-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:75:13-47
+159            android:label="@string/app_name"
+159-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:77:13-45
+160            android:roundIcon="@mipmap/ic_launcher_round"
+160-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:76:13-58
+161            android:targetActivity="com.example.recording_app.MainActivity" >
+161-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:74:13-51
+162            <intent-filter>
+162-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+163                <action android:name="android.intent.action.MAIN" />
+163-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+163-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+164
+165                <category android:name="android.intent.category.LAUNCHER" />
+165-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+165-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+166            </intent-filter>
+167        </activity-alias> <!-- Icon 3: 🎨 -->
+168        <activity-alias
+168-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:57:9-69:26
+169            android:name="com.example.recording_app.Icon3"
+169-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:58:13-34
+170            android:enabled="false"
+170-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:63:13-36
+171            android:exported="true"
+171-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:64:13-36
+172            android:icon="@mipmap/ic_launcher"
+172-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:60:13-47
+173            android:label="@string/app_name"
+173-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:62:13-45
+174            android:roundIcon="@mipmap/ic_launcher_round"
+174-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:61:13-58
+175            android:targetActivity="com.example.recording_app.MainActivity" >
+175-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:59:13-51
+176            <intent-filter>
+176-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+177                <action android:name="android.intent.action.MAIN" />
+177-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+177-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+178
+179                <category android:name="android.intent.category.LAUNCHER" />
+179-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+179-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+180            </intent-filter>
+181        </activity-alias> <!-- Icon 2: 📱 -->
+182        <activity-alias
+182-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:42:9-54:26
+183            android:name="com.example.recording_app.Icon2"
+183-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:43:13-34
+184            android:enabled="false"
+184-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:48:13-36
+185            android:exported="true"
+185-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:49:13-36
+186            android:icon="@mipmap/ic_launcher"
+186-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:45:13-47
+187            android:label="@string/app_name"
+187-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:47:13-45
+188            android:roundIcon="@mipmap/ic_launcher_round"
+188-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:46:13-58
+189            android:targetActivity="com.example.recording_app.MainActivity" >
+189-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:44:13-51
+190            <intent-filter>
+190-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+191                <action android:name="android.intent.action.MAIN" />
+191-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+191-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+192
+193                <category android:name="android.intent.category.LAUNCHER" />
+193-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+193-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+194            </intent-filter>
+195        </activity-alias> <!-- Activity Aliases for different app icons -->
+196        <!-- Icon 1: 💰 -->
+197        <activity-alias
+197-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:27:9-39:26
+198            android:name="com.example.recording_app.Icon1"
+198-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:28:13-34
+199            android:enabled="false"
+199-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:33:13-36
+200            android:exported="true"
+200-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:34:13-36
+201            android:icon="@mipmap/ic_launcher"
+201-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:30:13-47
+202            android:label="@string/app_name"
+202-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:32:13-45
+203            android:roundIcon="@mipmap/ic_launcher_round"
+203-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:31:13-58
+204            android:targetActivity="com.example.recording_app.MainActivity" >
+204-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:29:13-51
+205            <intent-filter>
+205-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:19:13-22:29
+206                <action android:name="android.intent.action.MAIN" />
+206-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:17-69
+206-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:20:25-66
+207
+208                <category android:name="android.intent.category.LAUNCHER" />
+208-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:17-77
+208-->Z:\202308190244chenyueyan\recording-app\src\main\AndroidManifest.xml:21:27-74
+209            </intent-filter>
+210        </activity-alias>
+211
+212        <service
+212-->[androidx.room:room-runtime:2.6.1] C:\Users\20653\.gradle\caches\transforms-4\5ea78131431ba8678babda086e0a1257\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+213            android:name="androidx.room.MultiInstanceInvalidationService"
+213-->[androidx.room:room-runtime:2.6.1] C:\Users\20653\.gradle\caches\transforms-4\5ea78131431ba8678babda086e0a1257\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+214            android:directBootAware="true"
+214-->[androidx.room:room-runtime:2.6.1] C:\Users\20653\.gradle\caches\transforms-4\5ea78131431ba8678babda086e0a1257\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+215            android:exported="false" />
+215-->[androidx.room:room-runtime:2.6.1] C:\Users\20653\.gradle\caches\transforms-4\5ea78131431ba8678babda086e0a1257\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+216
+217        <activity
+217-->[androidx.compose.ui:ui-tooling-android:1.5.4] C:\Users\20653\.gradle\caches\transforms-4\d39df1112c671cdedf9e7194e0baa920\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+218            android:name="androidx.compose.ui.tooling.PreviewActivity"
+218-->[androidx.compose.ui:ui-tooling-android:1.5.4] C:\Users\20653\.gradle\caches\transforms-4\d39df1112c671cdedf9e7194e0baa920\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+219            android:exported="true" />
+219-->[androidx.compose.ui:ui-tooling-android:1.5.4] C:\Users\20653\.gradle\caches\transforms-4\d39df1112c671cdedf9e7194e0baa920\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+220        <activity
+220-->[androidx.compose.ui:ui-test-manifest:1.5.4] C:\Users\20653\.gradle\caches\transforms-4\c1ccb064b14828b1141ab419b30cd60e\transformed\ui-test-manifest-1.5.4\AndroidManifest.xml:23:9-25:39
+221            android:name="androidx.activity.ComponentActivity"
+221-->[androidx.compose.ui:ui-test-manifest:1.5.4] C:\Users\20653\.gradle\caches\transforms-4\c1ccb064b14828b1141ab419b30cd60e\transformed\ui-test-manifest-1.5.4\AndroidManifest.xml:24:13-63
+222            android:exported="true" />
+222-->[androidx.compose.ui:ui-test-manifest:1.5.4] C:\Users\20653\.gradle\caches\transforms-4\c1ccb064b14828b1141ab419b30cd60e\transformed\ui-test-manifest-1.5.4\AndroidManifest.xml:25:13-36
+223
+224        <provider
+224-->[androidx.emoji2:emoji2:1.4.0] C:\Users\20653\.gradle\caches\transforms-4\32e571c5ebc1d833b49a6413a6c128c6\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+225            android:name="androidx.startup.InitializationProvider"
+225-->[androidx.emoji2:emoji2:1.4.0] C:\Users\20653\.gradle\caches\transforms-4\32e571c5ebc1d833b49a6413a6c128c6\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+226            android:authorities="com.example.recording_app.androidx-startup"
+226-->[androidx.emoji2:emoji2:1.4.0] C:\Users\20653\.gradle\caches\transforms-4\32e571c5ebc1d833b49a6413a6c128c6\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+227            android:exported="false" >
+227-->[androidx.emoji2:emoji2:1.4.0] C:\Users\20653\.gradle\caches\transforms-4\32e571c5ebc1d833b49a6413a6c128c6\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+228            <meta-data
+228-->[androidx.emoji2:emoji2:1.4.0] C:\Users\20653\.gradle\caches\transforms-4\32e571c5ebc1d833b49a6413a6c128c6\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+229                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+229-->[androidx.emoji2:emoji2:1.4.0] C:\Users\20653\.gradle\caches\transforms-4\32e571c5ebc1d833b49a6413a6c128c6\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+230                android:value="androidx.startup" />
+230-->[androidx.emoji2:emoji2:1.4.0] C:\Users\20653\.gradle\caches\transforms-4\32e571c5ebc1d833b49a6413a6c128c6\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+231            <meta-data
+231-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\20653\.gradle\caches\transforms-4\8ce0f4f528ac65628d5d19cea156bf77\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+232                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+232-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\20653\.gradle\caches\transforms-4\8ce0f4f528ac65628d5d19cea156bf77\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+233                android:value="androidx.startup" />
+233-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\20653\.gradle\caches\transforms-4\8ce0f4f528ac65628d5d19cea156bf77\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+234            <meta-data
+234-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+235                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+235-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+236                android:value="androidx.startup" />
+236-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+237        </provider>
+238
+239        <receiver
+239-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+240            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+240-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+241            android:directBootAware="false"
+241-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+242            android:enabled="true"
+242-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+243            android:exported="true"
+243-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+244            android:permission="android.permission.DUMP" >
+244-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+245            <intent-filter>
+245-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+246                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+246-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+246-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+247            </intent-filter>
+248            <intent-filter>
+248-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+249                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+249-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+249-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+250            </intent-filter>
+251            <intent-filter>
+251-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+252                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+252-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+252-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+253            </intent-filter>
+254            <intent-filter>
+254-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+255                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+255-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+255-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\20653\.gradle\caches\transforms-4\7e010214011e8c266ff0e99311e12340\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+256            </intent-filter>
+257        </receiver>
+258    </application>
+259
+260</manifest>

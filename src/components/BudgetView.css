@@ -1,0 +1,292 @@
+.budget-view {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.budget-notice {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.budget-notice p {
+  margin: 4px 0;
+}
+
+.budget-hint {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.budget-section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.budget-input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  align-items: end;
+}
+
+.budget-input-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.budget-input-item label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.budget-input-item input {
+  padding: 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.budget-input-item input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.btn-save-budget {
+  padding: 12px 24px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  height: fit-content;
+}
+
+.btn-save-budget:hover {
+  background: var(--primary-dark);
+}
+
+.budget-progress-section {
+  margin-bottom: 32px;
+}
+
+.progress-item {
+  margin-bottom: 24px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progress-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.progress-amount {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.progress-bar-container {
+  height: 12px;
+  background: var(--bg-color);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s;
+}
+
+.progress-bar.expense {
+  background: var(--danger-color);
+}
+
+.progress-bar.expense.over {
+  background: #dc2626;
+}
+
+.progress-bar.income {
+  background: var(--secondary-color);
+}
+
+.progress-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-percent {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.progress-warning {
+  font-size: 12px;
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+.budget-records-section {
+  margin-top: 32px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.btn-add-record {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.btn-add-record:hover {
+  background: var(--primary-dark);
+}
+
+.empty-budget-records {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-budget-records p {
+  margin: 8px 0;
+}
+
+.empty-hint {
+  font-size: 14px;
+}
+
+.budget-records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.budget-record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--bg-color);
+  border-radius: 8px;
+}
+
+.budget-record-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.budget-record-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.budget-record-category {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.budget-record-date {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.budget-record-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.budget-record-amount {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.budget-record-amount.expense {
+  color: var(--danger-color);
+}
+
+.budget-record-amount.income {
+  color: var(--secondary-color);
+}
+
+.budget-record-delete {
+  background: transparent;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.budget-record-delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .budget-view {
+    padding: 12px;
+  }
+  
+  .budget-input-group {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .btn-save-budget {
+    width: 100%;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .btn-add-record {
+    width: 100%;
+  }
+}
+
