@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.example.recording_app.R
 import com.example.recording_app.data.*
 import com.example.recording_app.ui.components.EmptyState
 import com.example.recording_app.ui.theme.*
@@ -32,7 +34,7 @@ fun StatisticsScreen(viewModel: FinanceViewModel) {
     ) {
         item {
             Text(
-                text = "统计分析",
+                text = stringResource(id = R.string.statistics_analysis),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary,
@@ -46,8 +48,8 @@ fun StatisticsScreen(viewModel: FinanceViewModel) {
         if (records.isEmpty()) {
             item {
                 EmptyState(
-                    message = "本月还没有数据",
-                    hint = "添加一些记录后查看统计",
+                    message = stringResource(id = R.string.no_data_this_month),
+                    hint = stringResource(id = R.string.hint_add_records_for_stats),
                     icon = "📊"
                 )
             }
@@ -56,7 +58,7 @@ fun StatisticsScreen(viewModel: FinanceViewModel) {
             if (expenseRecords.isNotEmpty()) {
                 item {
                     Text(
-                        text = "支出分类",
+                        text = stringResource(id = R.string.expense_category),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -88,7 +90,7 @@ fun StatisticsScreen(viewModel: FinanceViewModel) {
                 item {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "收入分类",
+                        text = stringResource(id = R.string.income_category),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,

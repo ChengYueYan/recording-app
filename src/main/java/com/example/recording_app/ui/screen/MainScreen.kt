@@ -21,6 +21,8 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.example.recording_app.R
 import com.example.recording_app.ui.theme.*
 import com.example.recording_app.ui.viewmodel.FinanceViewModel
 
@@ -52,7 +54,7 @@ fun MainScreen(
             ) {
                 Icon(
                     Icons.Default.Add,
-                    contentDescription = "添加记录",
+                    contentDescription = stringResource(id = R.string.add_record),
                     tint = Color.White,
                     modifier = Modifier.size(32.dp)
                 )
@@ -85,7 +87,7 @@ fun MainScreen(
                     },
                     label = {
                         Text(
-                            "记录",
+                            stringResource(id = R.string.records),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = if (selectedTab == 0) FontWeight.Bold else FontWeight.Normal
                         )
@@ -118,7 +120,7 @@ fun MainScreen(
                     },
                     label = {
                         Text(
-                            "日历",
+                            stringResource(id = R.string.calendar),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = if (selectedTab == 1) FontWeight.Bold else FontWeight.Normal
                         )
@@ -151,7 +153,7 @@ fun MainScreen(
                     },
                     label = {
                         Text(
-                            "设置",
+                            stringResource(id = R.string.settings),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = if (selectedTab == 2) FontWeight.Bold else FontWeight.Normal
                         )
@@ -184,7 +186,7 @@ fun MainScreen(
                     },
                     label = {
                         Text(
-                            "统计",
+                            stringResource(id = R.string.statistics),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = if (selectedTab == 3) FontWeight.Bold else FontWeight.Normal
                         )
@@ -217,7 +219,7 @@ fun MainScreen(
                     },
                     label = {
                         Text(
-                            "预算",
+                            stringResource(id = R.string.budget),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = if (selectedTab == 4) FontWeight.Bold else FontWeight.Normal
                         )

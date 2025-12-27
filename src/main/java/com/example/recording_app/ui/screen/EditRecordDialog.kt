@@ -20,10 +20,14 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.res.stringResource
+import com.example.recording_app.R
 import com.example.recording_app.data.*
 import com.example.recording_app.ui.theme.*
 import java.text.SimpleDateFormat
@@ -36,6 +40,9 @@ fun EditRecordDialog(
     onDismiss: () -> Unit,
     onConfirm: (Record) -> Unit
 ) {
+    val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val locale = configuration.locales[0] ?: Locale.getDefault()
     val customColors = CustomTheme.colors
     val primaryColor = customColors.primary
     
@@ -88,7 +95,7 @@ fun EditRecordDialog(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "编辑记录",
+                        text = stringResource(id = R.string.edit_record),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = primaryColor
@@ -109,7 +116,7 @@ fun EditRecordDialog(
                 ) {
                     TypeButton(
                         type = RecordType.EXPENSE,
-                        label = "支出",
+                        label = stringResource(id = R.string.expense),
                         icon = "📉",
                         isSelected = selectedType == RecordType.EXPENSE,
                         onClick = { selectedType = RecordType.EXPENSE },
@@ -118,7 +125,7 @@ fun EditRecordDialog(
                     )
                     TypeButton(
                         type = RecordType.INCOME,
-                        label = "收入",
+                        label = stringResource(id = R.string.income),
                         icon = "📈",
                         isSelected = selectedType == RecordType.INCOME,
                         onClick = { selectedType = RecordType.INCOME },
@@ -131,7 +138,7 @@ fun EditRecordDialog(
                 OutlinedTextField(
                     value = amountText,
                     onValueChange = { if (it.isEmpty() || it.all { char -> char.isDigit() || char == '.' }) amountText = it },
-                    label = { Text("金额") },
+                    label = { Text(stringResource(id = R.string.amount)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
                     shape = RoundedCornerShape(12.dp),
@@ -143,10 +150,17 @@ fun EditRecordDialog(
                 )
 
                 // Date Selection
+                val dateDisplayFormat = remember(locale) {
+                    if (locale.language == "zh") {
+                        SimpleDateFormat("yyyy年MM月dd日 HH:mm", locale)
+                    } else {
+                        SimpleDateFormat("MMM dd, yyyy HH:mm", locale)
+                    }
+                }
                 OutlinedTextField(
-                    value = SimpleDateFormat("yyyy年MM月dd日 HH:mm", Locale.getDefault()).format(Date(selectedDate)),
+                    value = dateDisplayFormat.format(Date(selectedDate)),
                     onValueChange = { },
-                    label = { Text("日期时间") },
+                    label = { Text(stringResource(id = R.string.date_time)) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable { showDatePicker = true },
@@ -218,7 +232,7 @@ fun EditRecordDialog(
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(12.dp)
                     ) {
-                        Text("取消", fontWeight = FontWeight.Medium)
+                        Text(stringResource(id = R.string.cancel), fontWeight = FontWeight.Medium)
                     }
                     Button(
                         onClick = {
@@ -242,7 +256,7 @@ fun EditRecordDialog(
                             contentColor = Color.White
                         )
                     ) {
-                        Text("保存", fontWeight = FontWeight.Bold)
+                        Text(stringResource(id = R.string.save), fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -272,7 +286,7 @@ fun DatePickerDialog(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     // Year
                     Column {
-                        Text("年", style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(id = R.string.year), style = MaterialTheme.typography.bodySmall)
                         OutlinedTextField(
                             value = selectedYear.toString(),
                             onValueChange = { selectedYear = it.toIntOrNull() ?: selectedYear },
@@ -281,7 +295,7 @@ fun DatePickerDialog(
                     }
                     // Month
                     Column {
-                        Text("月", style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(id = R.string.month), style = MaterialTheme.typography.bodySmall)
                         OutlinedTextField(
                             value = (selectedMonth + 1).toString(),
                             onValueChange = { 
@@ -293,7 +307,7 @@ fun DatePickerDialog(
                     }
                     // Day
                     Column {
-                        Text("日", style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(id = R.string.day), style = MaterialTheme.typography.bodySmall)
                         OutlinedTextField(
                             value = selectedDay.toString(),
                             onValueChange = { selectedDay = it.toIntOrNull() ?: selectedDay },
@@ -305,7 +319,7 @@ fun DatePickerDialog(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     // Hour
                     Column {
-                        Text("时", style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(id = R.string.hour), style = MaterialTheme.typography.bodySmall)
                         OutlinedTextField(
                             value = selectedHour.toString(),
                             onValueChange = { selectedHour = (it.toIntOrNull() ?: selectedHour).coerceIn(0, 23) },
@@ -314,7 +328,7 @@ fun DatePickerDialog(
                     }
                     // Minute
                     Column {
-                        Text("分", style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(id = R.string.minute), style = MaterialTheme.typography.bodySmall)
                         OutlinedTextField(
                             value = selectedMinute.toString(),
                             onValueChange = { selectedMinute = (it.toIntOrNull() ?: selectedMinute).coerceIn(0, 59) },
@@ -334,12 +348,12 @@ fun DatePickerDialog(
                     onDateSelected(newCalendar.timeInMillis)
                 }
             ) {
-                Text("确定")
+                Text(stringResource(id = R.string.confirm))
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("取消")
+                Text(stringResource(id = R.string.cancel))
             }
         }
     )

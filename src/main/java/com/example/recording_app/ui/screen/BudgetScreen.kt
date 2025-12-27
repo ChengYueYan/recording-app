@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.example.recording_app.R
 import com.example.recording_app.data.*
 import com.example.recording_app.ui.theme.*
 import com.example.recording_app.ui.viewmodel.FinanceViewModel
@@ -49,7 +51,7 @@ fun BudgetScreen(viewModel: FinanceViewModel) {
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         Text(
-            text = "预算管理",
+            text = stringResource(id = R.string.budget_management),
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             color = TextPrimary,
@@ -72,7 +74,7 @@ fun BudgetScreen(viewModel: FinanceViewModel) {
                 OutlinedTextField(
                     value = expectedExpense,
                     onValueChange = { if (it.isEmpty() || it.all { char -> char.isDigit() || char == '.' }) expectedExpense = it },
-                    label = { Text("预计支出") },
+                    label = { Text(stringResource(id = R.string.expected_expense)) },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
@@ -85,7 +87,7 @@ fun BudgetScreen(viewModel: FinanceViewModel) {
                 OutlinedTextField(
                     value = expectedIncome,
                     onValueChange = { if (it.isEmpty() || it.all { char -> char.isDigit() || char == '.' }) expectedIncome = it },
-                    label = { Text("预计收入") },
+                    label = { Text(stringResource(id = R.string.expected_income)) },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
@@ -108,7 +110,7 @@ fun BudgetScreen(viewModel: FinanceViewModel) {
                         contentColor = Color.White
                     )
                 ) {
-                    Text("保存预算", fontWeight = FontWeight.Bold)
+                    Text(stringResource(id = R.string.save_budget), fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -119,7 +121,7 @@ fun BudgetScreen(viewModel: FinanceViewModel) {
 
         if (expectedExp > 0) {
             BudgetProgressItem(
-                label = "预计支出",
+                label = stringResource(id = R.string.expected_expense),
                 icon = "📉",
                 actual = actualExpense,
                 expected = expectedExp,
@@ -129,7 +131,7 @@ fun BudgetScreen(viewModel: FinanceViewModel) {
 
         if (expectedInc > 0) {
             BudgetProgressItem(
-                label = "预计收入",
+                label = stringResource(id = R.string.expected_income),
                 icon = "📈",
                 actual = actualIncome,
                 expected = expectedInc,

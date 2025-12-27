@@ -23,14 +23,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import com.example.recording_app.R
 import com.example.recording_app.data.*
 import com.example.recording_app.ui.theme.*
 import com.example.recording_app.ui.viewmodel.FinanceViewModel
+import com.example.recording_app.util.CategoryLocalization
 import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
 fun CalendarScreen(viewModel: FinanceViewModel) {
+    val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val locale = configuration.locales[0] ?: Locale.getDefault()
     val allRecords by viewModel.allRecords.collectAsState()
     val month by viewModel.selectedMonth.collectAsState()
     var selectedDate by remember { mutableStateOf<Long?>(null) }
@@ -44,14 +52,18 @@ fun CalendarScreen(viewModel: FinanceViewModel) {
         }
     }
 
-    val monthName = remember(month) {
+    val monthName = remember(month, locale) {
         val monthParts = month.split("-")
         val cal = Calendar.getInstance().apply {
             set(Calendar.YEAR, monthParts[0].toInt())
             set(Calendar.MONTH, monthParts[1].toInt() - 1)
             set(Calendar.DAY_OF_MONTH, 1)
         }
-        SimpleDateFormat("yyyy年MM月", Locale.getDefault()).format(cal.time)
+        if (locale.language == "zh") {
+            SimpleDateFormat("yyyy年MM月", locale).format(cal.time)
+        } else {
+            SimpleDateFormat("MMMM yyyy", locale).format(cal.time)
+        }
     }
 
     val todayStart = remember {
@@ -169,7 +181,7 @@ fun CalendarScreen(viewModel: FinanceViewModel) {
                         ) {
                             Icon(
                                 Icons.Default.ChevronRight,
-                                contentDescription = "下一月",
+                                contentDescription = stringResource(id = R.string.next_month),
                                 tint = Primary
                             )
                         }
@@ -202,7 +214,13 @@ fun CalendarScreen(viewModel: FinanceViewModel) {
                 Column(
                     modifier = Modifier.padding(20.dp)
                 ) {
-                    val dateFormat = SimpleDateFormat("yyyy年MM月dd日", Locale.getDefault())
+                    val dateFormat = remember(locale) {
+                        if (locale.language == "zh") {
+                            SimpleDateFormat("yyyy年MM月dd日", locale)
+                        } else {
+                            SimpleDateFormat("MMMM dd, yyyy", locale)
+                        }
+                    }
                     Text(
                         text = dateFormat.format(Date(selectedDate!!)),
                         style = MaterialTheme.typography.titleLarge,
@@ -305,7 +323,15 @@ fun CalendarGrid(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                listOf("一", "二", "三", "四", "五", "六", "日").forEach { day ->
+                listOf(
+                    stringResource(id = R.string.weekday_mon),
+                    stringResource(id = R.string.weekday_tue),
+                    stringResource(id = R.string.weekday_wed),
+                    stringResource(id = R.string.weekday_thu),
+                    stringResource(id = R.string.weekday_fri),
+                    stringResource(id = R.string.weekday_sat),
+                    stringResource(id = R.string.weekday_sun)
+                ).forEach { day ->
                     Box(
                         modifier = Modifier.weight(1f),
                         contentAlignment = Alignment.Center
@@ -435,9 +461,14 @@ fun CalendarDay(
 
 @Composable
 fun DayRecordItem(record: Record) {
+    val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val locale = configuration.locales[0] ?: Locale.getDefault()
     val categories = DefaultCategories.getAllCategories()
     val category = categories.find { it.name == record.category }
-    val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    val dateFormat = remember(locale) {
+        SimpleDateFormat("HH:mm", locale)
+    }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -480,7 +511,7 @@ fun DayRecordItem(record: Record) {
                 }
                 Column {
                     Text(
-                        text = record.category,
+                        text = CategoryLocalization.getLocalizedCategoryName(context, record.category),
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary

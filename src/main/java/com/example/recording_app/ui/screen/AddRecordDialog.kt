@@ -23,8 +23,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
+import com.example.recording_app.R
 import com.example.recording_app.data.*
 import com.example.recording_app.ui.theme.*
+import com.example.recording_app.util.CategoryLocalization
 import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -80,7 +84,7 @@ fun AddRecordDialog(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "添加记录",
+                        text = stringResource(id = R.string.add_record),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary
@@ -101,7 +105,7 @@ fun AddRecordDialog(
                 ) {
                     TypeButton(
                         type = RecordType.EXPENSE,
-                        label = "支出",
+                        label = stringResource(id = R.string.expense),
                         icon = "📉",
                         isSelected = selectedType == RecordType.EXPENSE,
                         onClick = { selectedType = RecordType.EXPENSE },
@@ -110,7 +114,7 @@ fun AddRecordDialog(
                     )
                     TypeButton(
                         type = RecordType.INCOME,
-                        label = "收入",
+                        label = stringResource(id = R.string.income),
                         icon = "📈",
                         isSelected = selectedType == RecordType.INCOME,
                         onClick = { selectedType = RecordType.INCOME },
@@ -123,7 +127,7 @@ fun AddRecordDialog(
                 OutlinedTextField(
                     value = amountText,
                     onValueChange = { if (it.isEmpty() || it.all { char -> char.isDigit() || char == '.' }) amountText = it },
-                    label = { Text("金额") },
+                    label = { Text(stringResource(id = R.string.amount)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
                     shape = RoundedCornerShape(12.dp),
@@ -136,7 +140,7 @@ fun AddRecordDialog(
 
                 // Category Selection
                 Text(
-                    text = "选择分类",
+                    text = stringResource(id = R.string.select_category),
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Bold,
                     color = TextPrimary
@@ -159,7 +163,7 @@ fun AddRecordDialog(
                 OutlinedTextField(
                     value = noteText,
                     onValueChange = { noteText = it },
-                    label = { Text("备注（可选）") },
+                    label = { Text(stringResource(id = R.string.note_optional)) },
                     modifier = Modifier.fillMaxWidth(),
                     maxLines = 3,
                     shape = RoundedCornerShape(12.dp),
@@ -179,7 +183,7 @@ fun AddRecordDialog(
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(12.dp)
                     ) {
-                        Text("取消", fontWeight = FontWeight.Medium)
+                        Text(stringResource(id = R.string.cancel), fontWeight = FontWeight.Medium)
                     }
                     Button(
                         onClick = {
@@ -204,7 +208,7 @@ fun AddRecordDialog(
                             contentColor = Color.White
                         )
                     ) {
-                        Text("保存", fontWeight = FontWeight.Bold)
+                        Text(stringResource(id = R.string.save), fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -267,7 +271,9 @@ fun CategoryChip(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
     val scale by animateFloatAsState(if (isSelected) 1.05f else 1f)
+    val localizedName = CategoryLocalization.getLocalizedCategoryName(context, category.name)
     
     FilterChip(
         selected = isSelected,
@@ -279,7 +285,7 @@ fun CategoryChip(
             ) {
                 Text(text = category.icon)
                 Text(
-                    text = category.name,
+                    text = localizedName,
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
                 )

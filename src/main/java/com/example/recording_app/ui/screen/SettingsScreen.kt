@@ -22,11 +22,16 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.recording_app.R
 import com.example.recording_app.ui.theme.*
 import com.example.recording_app.data.ThemePreferences
 import com.example.recording_app.util.IconManager
+import com.example.recording_app.util.LanguageManager
+import com.example.recording_app.ui.components.LanguageSelectionDialog
+import android.content.Intent
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -46,18 +51,18 @@ fun SettingsScreen(
     // Available icon options (anime-style emoji icons)
     val iconOptions = remember {
         listOf(
-            "💰" to "金币",
-            "📱" to "手机",
-            "🎨" to "画笔",
-            "⭐" to "星星",
-            "🌸" to "樱花",
-            "🎯" to "目标",
-            "💎" to "钻石",
-            "🎭" to "面具",
-            "🌟" to "星芒",
-            "🎪" to "帐篷",
-            "🔮" to "水晶球",
-            "💫" to "流星"
+            "💰" to R.string.icon_gold,
+            "📱" to R.string.icon_phone,
+            "🎨" to R.string.icon_brush,
+            "⭐" to R.string.icon_star,
+            "🌸" to R.string.icon_sakura,
+            "🎯" to R.string.icon_target,
+            "💎" to R.string.icon_diamond,
+            "🎭" to R.string.icon_mask,
+            "🌟" to R.string.icon_star_glow,
+            "🎪" to R.string.icon_tent,
+            "🔮" to R.string.icon_crystal,
+            "💫" to R.string.icon_meteor
         )
     }
     
@@ -82,6 +87,13 @@ fun SettingsScreen(
     var selectedPrimaryColor by remember { mutableStateOf(currentPrimary) }
     var showColorInfo by remember { mutableStateOf(false) }
     
+    // Language settings
+    var currentLanguage by remember { 
+        mutableStateOf(LanguageManager.getSavedLanguage(context))
+    }
+    var showLanguageDialog by remember { mutableStateOf(false) }
+    var showRestartLanguageDialog by remember { mutableStateOf(false) }
+    
     // Update selected color when theme changes externally
     LaunchedEffect(currentPrimary) {
         selectedPrimaryColor = currentPrimary
@@ -97,7 +109,7 @@ fun SettingsScreen(
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         Text(
-            text = "个性化设置",
+            text = stringResource(id = R.string.personalization),
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             color = TextPrimary,
@@ -118,13 +130,13 @@ fun SettingsScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Text(
-                    text = "应用图标",
+                    text = stringResource(id = R.string.app_icon),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     color = TextPrimary
                 )
                 Text(
-                    text = "选择你喜欢的图标样式",
+                    text = stringResource(id = R.string.select_icon_style),
                     style = MaterialTheme.typography.bodyMedium,
                     color = TextSecondary
                 )
@@ -135,10 +147,10 @@ fun SettingsScreen(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    iconOptions.forEach { (icon, name) ->
+                    iconOptions.forEach { (icon, nameResId) ->
                         IconOption(
                             icon = icon,
-                            name = name,
+                            name = stringResource(id = nameResId),
                             isSelected = selectedIcon == icon,
                             onClick = {
                                 selectedIcon = icon
@@ -168,7 +180,7 @@ fun SettingsScreen(
                             contentColor = Color.White
                         )
                     ) {
-                        Text("应用图标更改，重启应用生效", fontWeight = FontWeight.Bold)
+                        Text(stringResource(id = R.string.apply_icon_change_restart), fontWeight = FontWeight.Bold)
                     }
                 }
                 
@@ -180,7 +192,7 @@ fun SettingsScreen(
                             shape = RoundedCornerShape(12.dp)
                         ) {
                             Text(
-                                text = "⚠️ 图标更改失败，请检查权限或稍后重试",
+                                text = stringResource(id = R.string.icon_change_failed),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = TextPrimary,
                                 modifier = Modifier.padding(12.dp)
@@ -194,14 +206,14 @@ fun SettingsScreen(
                         onDismissRequest = { showRestartDialog = false },
                         title = {
                             Text(
-                                text = "重启应用",
+                                text = stringResource(id = R.string.restart_app),
                                 style = MaterialTheme.typography.titleLarge,
                                 fontWeight = FontWeight.Bold
                             )
                         },
                         text = {
                             Text(
-                                text = "图标已更改成功！请重启应用后，桌面上的应用图标将更新为新选择的图标。",
+                                text = stringResource(id = R.string.icon_restart_confirmation),
                                 style = MaterialTheme.typography.bodyMedium
                             )
                         },
@@ -212,14 +224,14 @@ fun SettingsScreen(
                                     android.os.Process.killProcess(android.os.Process.myPid())
                                 }
                             ) {
-                                Text("确定重启", fontWeight = FontWeight.Bold)
+                                Text(stringResource(id = R.string.restart_now), fontWeight = FontWeight.Bold)
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { showRestartDialog = false }
                             ) {
-                                Text("稍后重启")
+                                Text(stringResource(id = R.string.restart_later))
                             }
                         },
                         shape = RoundedCornerShape(16.dp)
@@ -227,7 +239,7 @@ fun SettingsScreen(
                 }
                 
                 Text(
-                    text = "💡 提示：选择图标后点击上方按钮应用更改，然后重启应用即可看到新的桌面图标。",
+                    text = stringResource(id = R.string.icon_selection_tip),
                     style = MaterialTheme.typography.bodySmall,
                     color = TextSecondary
                 )
@@ -254,13 +266,13 @@ fun SettingsScreen(
                 ) {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "应用背景",
+                            text = stringResource(id = R.string.app_background),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
                             color = TextPrimary
                         )
                         Text(
-                            text = "选择自定义背景图片",
+                            text = stringResource(id = R.string.select_background_image),
                             style = MaterialTheme.typography.bodyMedium,
                             color = TextSecondary,
                             modifier = Modifier.padding(top = 4.dp)
@@ -281,7 +293,7 @@ fun SettingsScreen(
                             contentColor = Color.White
                         )
                     ) {
-                        Text("选择背景图片", fontWeight = FontWeight.Bold)
+                        Text(stringResource(id = R.string.select_background), fontWeight = FontWeight.Bold)
                     }
                     
                     if (backgroundImagePath != null) {
@@ -299,7 +311,7 @@ fun SettingsScreen(
                                 contentColor = Color.White
                             )
                         ) {
-                            Text("清除背景", fontWeight = FontWeight.Bold)
+                            Text(stringResource(id = R.string.clear_background), fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -311,7 +323,7 @@ fun SettingsScreen(
                         shape = RoundedCornerShape(12.dp)
                     ) {
                         Text(
-                            text = "✓ 背景图片已保存！背景会立即更新。",
+                            text = stringResource(id = R.string.background_saved),
                             style = MaterialTheme.typography.bodySmall,
                             color = TextPrimary,
                             modifier = Modifier.padding(12.dp)
@@ -320,7 +332,7 @@ fun SettingsScreen(
                 }
                 
                 Text(
-                    text = "💡 背景图片会应用在整个应用界面，建议使用高质量图片",
+                    text = stringResource(id = R.string.background_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = TextSecondary
                 )
@@ -341,35 +353,37 @@ fun SettingsScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Text(
-                    text = "主题颜色",
+                    text = stringResource(id = R.string.theme_color),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     color = TextPrimary
                 )
                 Text(
-                    text = "选择应用主色调",
+                    text = stringResource(id = R.string.select_theme_color),
                     style = MaterialTheme.typography.bodyMedium,
                     color = TextSecondary
                 )
 
                 // Color Picker Grid
-                val colors = listOf(
-                    Color(0xFF6366F1) to "靛蓝",
-                    Color(0xFF8B5CF6) to "紫色",
-                    Color(0xFFEC4899) to "粉色",
-                    Color(0xFFEF4444) to "红色",
-                    Color(0xFFF59E0B) to "琥珀",
-                    Color(0xFF10B981) to "翠绿",
-                    Color(0xFF3B82F6) to "蓝色",
-                    Color(0xFF06B6D4) to "青色",
-                )
+                val colors = remember {
+                    listOf(
+                        Color(0xFF6366F1) to R.string.color_indigo,
+                        Color(0xFF8B5CF6) to R.string.color_purple,
+                        Color(0xFFEC4899) to R.string.color_pink,
+                        Color(0xFFEF4444) to R.string.color_red,
+                        Color(0xFFF59E0B) to R.string.color_amber,
+                        Color(0xFF10B981) to R.string.color_green,
+                        Color(0xFF3B82F6) to R.string.color_blue,
+                        Color(0xFF06B6D4) to R.string.color_cyan,
+                    )
+                }
 
                 FlowRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    colors.forEach { (color, name) ->
+                    colors.forEach { (color, nameResId) ->
                         ColorOption(
                             color = color,
                             isSelected = selectedPrimaryColor == color,
@@ -405,7 +419,7 @@ fun SettingsScreen(
                         contentColor = Color.White
                     )
                 ) {
-                    Text("应用主题颜色", fontWeight = FontWeight.Bold)
+                    Text(stringResource(id = R.string.apply_theme_color), fontWeight = FontWeight.Bold)
                 }
                 
                 if (showColorInfo) {
@@ -425,6 +439,131 @@ fun SettingsScreen(
             }
         }
 
+        // Language Setting
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(containerColor = Surface),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.language_settings),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = TextPrimary
+                )
+                Text(
+                    text = stringResource(id = R.string.change_language),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = TextSecondary
+                )
+
+                // Current Language Display
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = SurfaceVariant),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column {
+                            Text(
+                                text = stringResource(id = R.string.current_language),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextSecondary
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = LanguageManager.getLanguageDisplayName(context, currentLanguage),
+                                style = MaterialTheme.typography.bodyLarge,
+                                fontWeight = FontWeight.Bold,
+                                color = TextPrimary
+                            )
+                        }
+                    }
+                }
+
+                // Language Selection Buttons
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    OutlinedButton(
+                        onClick = { 
+                            if (currentLanguage != LanguageManager.LANGUAGE_CHINESE) {
+                                LanguageManager.saveLanguage(context, LanguageManager.LANGUAGE_CHINESE)
+                                currentLanguage = LanguageManager.LANGUAGE_CHINESE
+                                showRestartLanguageDialog = true
+                            }
+                        },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = if (currentLanguage == LanguageManager.LANGUAGE_CHINESE) {
+                            ButtonDefaults.outlinedButtonColors(
+                                containerColor = customColors.primaryContainer
+                            )
+                        } else {
+                            ButtonDefaults.outlinedButtonColors()
+                        }
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.language_chinese_button),
+                            fontWeight = if (currentLanguage == LanguageManager.LANGUAGE_CHINESE) {
+                                FontWeight.Bold
+                            } else {
+                                FontWeight.Normal
+                            }
+                        )
+                    }
+                    
+                    OutlinedButton(
+                        onClick = { 
+                            if (currentLanguage != LanguageManager.LANGUAGE_ENGLISH) {
+                                LanguageManager.saveLanguage(context, LanguageManager.LANGUAGE_ENGLISH)
+                                currentLanguage = LanguageManager.LANGUAGE_ENGLISH
+                                showRestartLanguageDialog = true
+                            }
+                        },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = if (currentLanguage == LanguageManager.LANGUAGE_ENGLISH) {
+                            ButtonDefaults.outlinedButtonColors(
+                                containerColor = customColors.primaryContainer
+                            )
+                        } else {
+                            ButtonDefaults.outlinedButtonColors()
+                        }
+                    ) {
+                        Text(
+                            text = "English",
+                            fontWeight = if (currentLanguage == LanguageManager.LANGUAGE_ENGLISH) {
+                                FontWeight.Bold
+                            } else {
+                                FontWeight.Normal
+                            }
+                        )
+                    }
+                }
+                
+                Text(
+                    text = stringResource(id = R.string.language_restart_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextSecondary
+                )
+            }
+        }
+
         // Info Card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -439,18 +578,63 @@ fun SettingsScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "💡 使用提示",
+                    text = stringResource(id = R.string.usage_tips),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = TextPrimary
                 )
                 Text(
-                    text = "• 图标选择用于个性化显示\n• 背景图片建议使用高质量图片以获得最佳效果\n• 主题颜色更改后立即生效\n• 背景图片更改后会自动更新并显示",
+                    text = stringResource(id = R.string.tips_content),
                     style = MaterialTheme.typography.bodyMedium,
                     color = TextSecondary
                 )
             }
         }
+    }
+
+    // Language Restart Dialog
+    if (showRestartLanguageDialog) {
+        AlertDialog(
+            onDismissRequest = { showRestartLanguageDialog = false },
+            title = {
+                Text(
+                    text = stringResource(id = R.string.restart_app),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            text = {
+                Text(
+                    text = stringResource(id = R.string.restart_confirmation),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showRestartLanguageDialog = false
+                        // Restart app
+                        val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+                        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(intent)
+                        android.os.Process.killProcess(android.os.Process.myPid())
+                    }
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.restart_now),
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = { showRestartLanguageDialog = false }
+                ) {
+                    Text(stringResource(id = R.string.restart_later))
+                }
+            },
+            shape = RoundedCornerShape(16.dp)
+        )
     }
 }
 
@@ -476,7 +660,7 @@ fun ColorOption(
         if (isSelected) {
             Icon(
                 imageVector = Icons.Default.Check,
-                contentDescription = "已选择",
+                contentDescription = stringResource(id = R.string.selected),
                 tint = Color.White,
                 modifier = Modifier.size(32.dp)
             )
@@ -536,7 +720,7 @@ fun IconOption(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Check,
-                        contentDescription = "已选择",
+                        contentDescription = stringResource(id = R.string.selected),
                         tint = Color.White,
                         modifier = Modifier
                             .size(20.dp)

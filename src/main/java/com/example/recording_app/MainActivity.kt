@@ -1,5 +1,6 @@
 package com.example.recording_app
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,16 +15,32 @@ import com.example.recording_app.ui.theme.FinanceAppTheme
 import com.example.recording_app.ui.viewmodel.FinanceViewModel
 import com.example.recording_app.data.ThemePreferences
 import com.example.recording_app.ui.components.BackgroundImageBox
+import com.example.recording_app.ui.components.LanguageSelectionDialog
+import com.example.recording_app.util.LanguageManager
 
 class MainActivity : ComponentActivity() {
     private lateinit var viewModel: FinanceViewModel
 
+    override fun attachBaseContext(newBase: Context) {
+        val savedLanguage = LanguageManager.getSavedLanguage(newBase)
+        val context = LanguageManager.setAppLocale(newBase, savedLanguage)
+        super.attachBaseContext(context)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Apply saved language
+        val savedLanguage = LanguageManager.getSavedLanguage(this)
+        LanguageManager.updateConfiguration(this, savedLanguage)
         
         viewModel = FinanceViewModel(application)
         
         setContent {
+            var showLanguageDialog by remember { 
+                mutableStateOf(LanguageManager.isFirstLaunch(this@MainActivity))
+            }
+            
             var themeColor by remember { 
                 try {
                     mutableStateOf(ThemePreferences.getPrimaryColorAsColor(applicationContext))
@@ -34,6 +51,18 @@ class MainActivity : ComponentActivity() {
             
             var backgroundImagePath by remember { 
                 mutableStateOf<String?>(ThemePreferences.getBackgroundImagePath(applicationContext))
+            }
+            
+            if (showLanguageDialog) {
+                LanguageSelectionDialog(
+                    onLanguageSelected = { language ->
+                        LanguageManager.saveLanguage(this@MainActivity, language)
+                        LanguageManager.setFirstLaunchCompleted(this@MainActivity)
+                        showLanguageDialog = false
+                        // Restart activity to apply language change
+                        recreate()
+                    }
+                )
             }
             
             FinanceAppTheme(primaryColor = themeColor) {

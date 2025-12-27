@@ -24,14 +24,19 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Stable
+import com.example.recording_app.R
 import com.example.recording_app.data.*
 import com.example.recording_app.ui.components.EmptyState
 import com.example.recording_app.ui.theme.*
 import com.example.recording_app.ui.viewmodel.FinanceViewModel
+import com.example.recording_app.util.CategoryLocalization
 import kotlin.math.roundToInt
 import java.text.SimpleDateFormat
 import java.util.*
@@ -56,21 +61,21 @@ fun RecordsScreen(viewModel: FinanceViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 SummaryCard(
-                    title = "收入",
+                    title = stringResource(id = R.string.income),
                     amount = summary.income,
                     icon = "📈",
                     gradient = listOf(Secondary, SecondaryLight),
                     modifier = Modifier.weight(1f)
                 )
                 SummaryCard(
-                    title = "支出",
+                    title = stringResource(id = R.string.expense),
                     amount = summary.expense,
                     icon = "📉",
                     gradient = listOf(Danger, Color(0xFFFF8A80)),
                     modifier = Modifier.weight(1f)
                 )
                 SummaryCard(
-                    title = "结余",
+                    title = stringResource(id = R.string.balance),
                     amount = summary.balance,
                     icon = "💰",
                     gradient = if (summary.balance >= 0) listOf(Secondary, SecondaryLight) else listOf(Danger, Color(0xFFFF8A80)),
@@ -82,7 +87,7 @@ fun RecordsScreen(viewModel: FinanceViewModel) {
         // Records List Header
         item {
             Text(
-                text = "收支明细",
+                text = stringResource(id = R.string.records_detail),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = CustomTheme.colors.primary,
@@ -94,8 +99,8 @@ fun RecordsScreen(viewModel: FinanceViewModel) {
         if (records.isEmpty()) {
             item {
                 EmptyState(
-                    message = "还没有记录",
-                    hint = "点击右下角 + 按钮添加第一笔记录"
+                    message = stringResource(id = R.string.no_records),
+                    hint = stringResource(id = R.string.hint_add_first_record)
                 )
             }
         } else {
@@ -233,13 +238,13 @@ fun SwipeableRecordItem(
                 ) {
                     Icon(
                         Icons.Default.Delete,
-                        contentDescription = "删除",
+                        contentDescription = stringResource(id = R.string.delete),
                         tint = Color.White,
                         modifier = Modifier.size(24.dp)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        "删除",
+                        stringResource(id = R.string.delete),
                         style = MaterialTheme.typography.bodySmall,
                         color = Color.White,
                         fontWeight = FontWeight.Bold
@@ -265,13 +270,13 @@ fun SwipeableRecordItem(
                 ) {
                     Icon(
                         Icons.Default.Edit,
-                        contentDescription = "编辑",
+                        contentDescription = stringResource(id = R.string.edit),
                         tint = Color.White,
                         modifier = Modifier.size(24.dp)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        "编辑",
+                        stringResource(id = R.string.edit),
                         style = MaterialTheme.typography.bodySmall,
                         color = Color.White,
                         fontWeight = FontWeight.Bold
@@ -321,9 +326,18 @@ fun RecordItem(
     onSwipe: (Float) -> Unit,
     onSwipeEnd: () -> Unit
 ) {
+    val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val locale = configuration.locales[0] ?: Locale.getDefault()
     val categories = DefaultCategories.getAllCategories()
     val category = categories.find { it.name == record.category }
-    val dateFormat = SimpleDateFormat("MM月dd日 HH:mm", Locale.getDefault())
+    val dateFormat = remember(locale) {
+        if (locale.language == "zh") {
+            SimpleDateFormat("MM月dd日 HH:mm", locale)
+        } else {
+            SimpleDateFormat("MMM dd, HH:mm", locale)
+        }
+    }
     var expanded by remember { mutableStateOf(false) }
     
     Card(
@@ -384,7 +398,7 @@ fun RecordItem(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = record.category,
+                        text = CategoryLocalization.getLocalizedCategoryName(context, record.category),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary
