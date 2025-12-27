@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="add_record">添加记录</string>
+    <string name="amount">金额</string>
+    <string name="app_name">记账App</string>
+    <string name="budget">预算</string>
+    <string name="calendar">日历</string>
+    <string name="cancel">取消</string>
+    <string name="category">分类</string>
+    <string name="date">日期</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="expected_expense">预计支出</string>
+    <string name="expected_income">预计收入</string>
+    <string name="expense">支出</string>
+    <string name="income">收入</string>
+    <string name="month_balance">本月结余</string>
+    <string name="month_expense">本月支出</string>
+    <string name="month_income">本月收入</string>
+    <string name="note">备注</string>
+    <string name="records">记录</string>
+    <string name="save">保存</string>
+    <string name="save_budget">保存预算</string>
+    <string name="statistics">统计</string>
+    <style name="Base.Theme._202308190244chenyueyan" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme._202308190244chenyueyan" parent="Base.Theme._202308190244chenyueyan"/>
+</resources>
