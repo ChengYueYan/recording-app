@@ -368,10 +368,6 @@ MIT License
 
 ---
 
-## Screenshots / 应用截图
-
-_Coming soon / 即将添加_
-
 ## Contact / 联系方式
 
 - GitHub: [@ChengYueYan](https://github.com/ChengYueYan)
